@@ -1,8 +1,29 @@
 import logo from "../images/x_logo_background-removed.png"
+import MoreSettings from "../Components/MoreSettings"
 import {Link} from "react-router"
 import { Bell, CircleEllipsis, CircleSlash2, Ellipsis, HouseIcon, Mail, SearchIcon, User, UserPlus, Users } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 const HomePage = () => {
+    const [isDrowDownOpen,setIsDropDownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(()=>{
+        const handleClickOutside = (event)=>{
+            if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
+                setIsDropDownOpen(false)
+            }
+        };
+
+        if(isDrowDownOpen){
+            document.addEventListener('mousedown',handleClickOutside);
+        }
+
+        return () =>{
+            document.removeEventListener('mousedown',handleClickOutside);
+        };
+    }, [isDrowDownOpen]);
+
     return (
         <div className="relative h-full w-full">
             <div className="flex">
@@ -87,8 +108,8 @@ const HomePage = () => {
                             </button>
                         </div>
 
-                        <div>
-                            <button className="btn btn-ghost rounded-full p-4 w-full h-[80%] justify-start hover:bg-slate-800">
+                        <div ref={dropdownRef} className="relative">
+                            <button onClick={() => setIsDropDownOpen(!isDrowDownOpen)} className="btn btn-ghost rounded-full p-4 w-full h-[80%] justify-start hover:bg-slate-800">
                                 <div className="flex gap-5 items-center w-full">
                                     <img src="" alt="profile" className="w-8 h-8 rounded-full"/>
                                     <div className="flex-1">
@@ -104,6 +125,8 @@ const HomePage = () => {
                                     </div>
                                 </div>
                             </button>
+
+                            {isDrowDownOpen && <MoreSettings setIsDropDownOpen={setIsDropDownOpen}/>}
                         </div>
                     </div>
                 </div>
