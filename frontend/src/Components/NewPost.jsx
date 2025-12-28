@@ -8,12 +8,17 @@ const NewPost = () => {
         <div className="card-body bg-black border border-black border-b-gray-800">
             <div className="form-control mb-4 flex gap-5">
                 <img src="" alt="profile" className="w-8 h-8 rounded-full"/>
-                <input
-                    type="text"
+                <textarea
                     placeholder="What's happening?"
-                    className="w-full bg-black text-xl outline-none border-none focus:outline-none focus:ring-0 focus:border-none"
+                    className="w-full bg-black text-xl outline-none border-none focus:outline-none focus:ring-0 focus:border-none resize-none overflow-hidden"
                     value={post.content}
-                    onChange={(e) => setPost({ ...post, content: e.target.value })}
+                    onChange={(e) => {
+                        setPost({ ...post, content: e.target.value })
+                        // Auto-resize textarea
+                        e.target.style.height = 'auto'
+                        e.target.style.height = e.target.scrollHeight + 'px'
+                    }}  
+                    rows="1"
                 />
             </div>
 
