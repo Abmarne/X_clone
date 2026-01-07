@@ -1,7 +1,7 @@
 import logo from "../images/x_logo_background-removed.png"
 import MoreSettings from "../Components/MoreSettings"
 import { Bell, CircleEllipsis, CircleSlash2, Ellipsis, HouseIcon, Mail, SearchIcon, User, UserPlus, Users } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 const LeftPanel = () =>{
@@ -44,7 +44,7 @@ const LeftPanel = () =>{
                                 </div>
                                 
                                 <div>
-                                    <Link to={"/"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
+                                    <Link to={"/explore"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
                                         <SearchIcon className="w-8 h-8"/>
                                         <span className="text-xl">Explore</span>
                                     </Link>
