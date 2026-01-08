@@ -51,7 +51,7 @@ const LeftPanel = () =>{
                                 </div>
 
                                 <div>
-                                    <Link to={"/"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
+                                    <Link to={"/notifications"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
                                         <Bell className="w-8 h-8"/>
                                         <span className="text-xl">Notifications</span>
                                     </Link>
