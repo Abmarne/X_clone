@@ -58,7 +58,7 @@ const LeftPanel = () =>{
                                 </div>
 
                                 <div>
-                                    <Link to={"/"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
+                                    <Link to={"/follow"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
                                         <UserPlus className="w-8 h-8"/>
                                         <span className="text-xl">Follow</span>
                                     </Link>
