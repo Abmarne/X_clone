@@ -120,7 +120,7 @@ const LeftPanel = () =>{
                                     <div className="">
                                         <Ellipsis/>
                                     </div>
-                                </div>
+                                </div>  
                             </button>
 
                             {isDrowDownOpen && <MoreSettings setIsDropDownOpen={setIsDropDownOpen}/>}

@@ -2,6 +2,7 @@ import { MoveLeft, Settings } from "lucide-react";
 import LeftPanel from "../Components/LeftPanel"
 import RightPanel from "../Components/RightPanel"
 import { Link, useLocation } from "react-router-dom"
+import { FollowSuggestions } from "../Components/FollowSuggestions";
 
 const FollowPage = () => {
     const location = useLocation();
@@ -54,6 +55,14 @@ const FollowPage = () => {
                     >
                         Creators for You
                     </Link>
+                </div>
+
+                <div className="text-xl font-bold m-4">
+                    Suggested For You
+                </div>
+
+                <div>
+                    <FollowSuggestions/>
                 </div>
             </div>
             
