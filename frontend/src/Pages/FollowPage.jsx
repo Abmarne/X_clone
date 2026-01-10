@@ -62,7 +62,17 @@ const FollowPage = () => {
                 </div>
 
                 <div>
-                    <FollowSuggestions/>
+                    {[1, 2, 3, 4, 5].map((num) => (
+                        <FollowSuggestions
+                            key={num}
+                            user={{
+                                name: `user${num}`,
+                                profilePicture: "https://via.placeholder.com/32"
+                            }}
+                            userName={`@user${num}`}
+                            userDescription={`This is user${num}'s description`}
+                        />
+                    ))}
                 </div>
             </div>
             

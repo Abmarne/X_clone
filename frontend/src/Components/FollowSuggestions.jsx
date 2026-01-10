@@ -1,23 +1,23 @@
 
 import { Link } from "react-router"
 
-export const FollowSuggestions = () => {
+export const FollowSuggestions = ({user,userName,userDescription}) => {
   return (
     <div>
         <Link >
             <div className="flex justify-between">
 
                 <div className="flex p-1">
-                    <img src="" alt="profile" className="w-8 h-8 rounded-full m-3"/>
+                    <img src={user.profilePicture} alt="profile" className="w-8 h-8 rounded-full m-3"/>
                     <div className="flex-1">
                         <div className="text-sm">
-                            Name
+                            {user.name}
                         </div>
                         <div className="text-sm text-gray-500">
-                            Username
+                            {userName}
                         </div>
                         <div className="text-sm">
-                            Description
+                            {userDescription}
                         </div>
                     </div>
                 </div>
