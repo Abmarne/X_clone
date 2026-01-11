@@ -1,6 +1,7 @@
 import LeftPanel from "../Components/LeftPanel"
 import RightPanel from "../Components/RightPanel"
 import { Link, useLocation } from "react-router-dom"
+import ExploreNews from "../Components/ExploreNews"
 
 const ExplorePage = () => {
   const location = useLocation();
@@ -70,6 +71,20 @@ const ExplorePage = () => {
                             Entertainment
                         </Link>
                     </div>
+                </div>
+                
+                <div className="p-5 pb-1 text-xl font-bold">
+                    Today's News
+                </div>
+                <div className="px-5 py-5">
+                    <ExploreNews 
+                        newsItems={[1,2,3].map((num) => ({
+                            headline: `headline ${num}`,
+                            time: `2 days ago`,
+                            category: `News`,
+                            posts: `${Math.floor(Math.random() * (1000 - 80)) + 80} posts`
+                        }))}
+                    />
                 </div>
             </div>
             
