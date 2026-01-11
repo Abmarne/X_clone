@@ -12,8 +12,15 @@ const RightPanel = () =>{
                 </div>
             </div>
 
-            <div>
-                <TodayNews/>
+            <div className="px-10 py-5">
+                <TodayNews 
+                    newsItems={[1,2,3].map((num) => ({
+                        headline: `headline ${num}`,
+                        time: `2 days ago`,
+                        category: `News`,
+                        posts: `${Math.floor(Math.random() * (1000 - 80)) + 80} posts`
+                    }))}
+                />
             </div>
 
         </div>

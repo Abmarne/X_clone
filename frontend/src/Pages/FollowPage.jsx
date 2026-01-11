@@ -72,7 +72,7 @@ const FollowPage = () => {
                             userName={`@user${num}`}
                             userDescription={`This is user${num}'s description`}
                         />
-                    ))}
+                    ))} 
                 </div>
             </div>
             
