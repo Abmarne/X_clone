@@ -15,7 +15,7 @@ const HomePage = () => {
                 {/* Left Side */}
                 <LeftPanel/>
 
-                <div className="flex-[4] min-h-screen bg-[rgba(0,0,0,0.0)] border border-black border-r-gray-800">
+                <div className="flex-[4] min-h-screen bg-black border border-black border-r-gray-800">
                     <div className=" flex font-bold">
                         <div className="flex-1 border border-black border-b-gray-800 p-4 text-center hover:bg-gray-800 bg-transparent">
                             <Link to={"/home"} >For you</Link>

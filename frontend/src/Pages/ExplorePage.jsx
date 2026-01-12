@@ -14,7 +14,7 @@ const ExplorePage = () => {
         <div className="flex">
             <LeftPanel/>
 
-            <div className="flex-[4] min-h-screen bg-[rgba(0,0,0,0.0)] border border-black border-r-gray-800">
+            <div className="flex-[4] min-h-screen bg-black border border-black border-r-gray-800">
                 <div className="sticky top-0 z-10 bg-black bg-opacity-80 backdrop-blur-sm">
 
                     <div className="flex flex-col items-start px-10">

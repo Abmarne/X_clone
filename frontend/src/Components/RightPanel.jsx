@@ -2,7 +2,7 @@ import TodayNews from "./TodayNews";
 
 const RightPanel = () =>{
     return(
-        <div className="flex-[3] min-h-screen bg-[rgba(0,0,0,0.0)] border border-black border-r-gray-800 sticky top-0">
+        <div className="flex-[3] h-screen bg-black border border-black border-r-gray-800 sticky top-0 self-start overflow-y-auto scrollbar-hide">
             <div className="flex flex-col items-start px-10 py-5">
                 <div className="w-full mt-2">
                     <input id="search" type="text" placeholder="Search"

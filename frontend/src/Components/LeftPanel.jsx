@@ -25,7 +25,7 @@ const LeftPanel = () =>{
     }, [isDrowDownOpen]);
     
     return(
-        <div className="flex-[2] min-h-screen bg-[rgba(0,0,0,0.0)] border border-black border-r-gray-800 sticky top-0">
+        <div className="flex-[2] h-screen bg-black border border-black border-r-gray-800 sticky top-0 self-start overflow-y-auto scrollbar-hide">
                     <div className="flex flex-col items-start px-4 gap-2">
 
                         <div className="flex flex-col items-start px-4 py-5 gap-3">
