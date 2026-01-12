@@ -2,6 +2,7 @@ import LeftPanel from "../Components/LeftPanel"
 import RightPanel from "../Components/RightPanel"
 import { Link, useLocation } from "react-router-dom"
 import ExploreNews from "../Components/ExploreNews"
+import Trending from "../Components/Trending"
 
 const ExplorePage = () => {
   const location = useLocation();
@@ -83,6 +84,17 @@ const ExplorePage = () => {
                             time: `2 days ago`,
                             category: `News`,
                             posts: `${Math.floor(Math.random() * (1000 - 80)) + 80} posts`
+                        }))}
+                    />
+                </div>
+
+                {/* Trending */}
+                <div className="w-full">
+                    <Trending 
+                        items = {[1,2,3,4,5].map((num) => ({
+                            type : `Trending`,
+                            tag : `Tagline ${num}`,
+                            post : `${(Math.random() * (100 - 1) + 1).toFixed(1)}k posts`
                         }))}
                     />
                 </div>

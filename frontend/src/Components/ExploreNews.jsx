@@ -31,6 +31,8 @@ const ExploreNews = ({newsItems = []}) => {
                 </div>
             </div>
         ))}
+
+        <div className="h-0 border border-gray-800"></div>
         
     </div>
   )
