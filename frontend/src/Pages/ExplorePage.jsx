@@ -3,11 +3,14 @@ import RightPanel from "../Components/RightPanel"
 import { Link, useLocation } from "react-router-dom"
 import ExploreNews from "../Components/ExploreNews"
 import Trending from "../Components/Trending"
+import { useState } from "react"
 
 const ExplorePage = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const activeTab = searchParams.get('tab') || 'for-you';
+
+  const [trending,setTrending] = useState(false);
   
   return (
     <div className="relative h-full w-full">
@@ -29,6 +32,7 @@ const ExplorePage = () => {
                     <div className="flex">
                         <Link 
                             to="/explore?tab=for-you" 
+                            onClick={() => setTrending(false)}
                             className={`flex-1 border border-black border-b-gray-800 text-center p-3 hover:bg-gray-800 bg-transparent ${
                                 activeTab === 'for-you' ? 'text-white' : 'text-gray-500'
                             }`}
@@ -38,6 +42,7 @@ const ExplorePage = () => {
 
                         <Link 
                             to="/explore?tab=trending" 
+                            onClick = {() => setTrending(true)}
                             className={`flex-1 border border-black border-b-gray-800 text-center p-3 hover:bg-gray-800 bg-transparent ${
                                 activeTab === 'trending' ? 'text-white' : 'text-gray-500'
                             }`}
@@ -46,7 +51,8 @@ const ExplorePage = () => {
                         </Link>
 
                         <Link 
-                            to="/explore?tab=news" 
+                            to="/explore?tab=news"
+                            onClick = {() => setTrending(false)} 
                             className={`flex-1 border border-black border-b-gray-800 text-center p-3 hover:bg-gray-800 bg-transparent ${
                                 activeTab === 'news' ? 'text-white' : 'text-gray-500'
                             }`}
@@ -56,6 +62,7 @@ const ExplorePage = () => {
 
                         <Link 
                             to="/explore?tab=sports" 
+                            onClick={() => setTrending(false)}
                             className={`flex-1 border border-black border-b-gray-800 text-center p-3 hover:bg-gray-800 bg-transparent ${
                                 activeTab === 'sports' ? 'text-white' : 'text-gray-500'
                             }`}
@@ -64,6 +71,7 @@ const ExplorePage = () => {
                         </Link>
 
                         <Link 
+                            onClick={()=> setTrending(false)}
                             to="/explore?tab=entertainment" 
                             className={`flex-1 border border-black border-b-gray-800 text-center p-3 hover:bg-gray-800 bg-transparent ${
                                 activeTab === 'entertainment' ? 'text-white' : 'text-gray-500'
@@ -77,21 +85,22 @@ const ExplorePage = () => {
                 <div className="p-5 pb-1 text-xl font-bold">
                     Today's News
                 </div>
-                <div className="px-5 py-5">
-                    <ExploreNews 
-                        newsItems={[1,2,3].map((num) => ({
-                            headline: `headline ${num}`,
-                            time: `2 days ago`,
-                            category: `News`,
-                            posts: `${Math.floor(Math.random() * (1000 - 80)) + 80} posts`
-                        }))}
-                    />
-                </div>
+
+                { !trending  &&  <div className="px-5 py-5">
+                        <ExploreNews 
+                            newsItems={[1,2,3].map((num) => ({
+                                headline: `headline ${num}`,
+                                time: `2 days ago`,
+                                category: `News`,
+                                posts: `${Math.floor(Math.random() * (1000 - 80)) + 80} posts`
+                            }))}
+                        />
+                    </div>}
 
                 {/* Trending */}
                 <div className="w-full">
                     <Trending 
-                        items = {[1,2,3,4,5].map((num) => ({
+                        items = {[1,2,3,4,5,6,7].map((num) => ({
                             type : `Trending`,
                             tag : `Tagline ${num}`,
                             post : `${(Math.random() * (100 - 1) + 1).toFixed(1)}k posts`
