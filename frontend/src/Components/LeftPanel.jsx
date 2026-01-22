@@ -65,7 +65,7 @@ const LeftPanel = () =>{
                                 </div>
 
                                 <div>
-                                    <Link to={"/"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
+                                    <Link to={"/chat"} className="btn btn-ghost rounded-full p-3 w-full justify-start gap-4">
                                         <Mail className="w-8 h-8"/>
                                         <span className="text-xl">Chat</span>
                                     </Link>
@@ -126,7 +126,7 @@ const LeftPanel = () =>{
                             {isDrowDownOpen && <MoreSettings setIsDropDownOpen={setIsDropDownOpen}/>}
                         </div>
                     </div>
-                </div>
+                </div>   
     );
 }
 
