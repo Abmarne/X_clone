@@ -85,7 +85,20 @@ const Chat = () => {
 
             </div>
             <div className="flex-[6] border border-black border-l-gray-800">
-
+                <div className="flex items-center justify-center h-full">
+                    <div className="flex flex-col items-center justify-center gap-2">
+                        <div className="flex items-center justify-center">
+                            <div className="bg-gray-900 rounded-full p-4">
+                                <Mail className="w-16 h-16"></Mail>
+                            </div>
+                        </div>
+                        <div className="font-bold text-lg">Start Conversation</div>
+                        <div className="text-gray-600">Choose from your existing Conversations, or start a new one.</div>
+                        <div>
+                            <button className="bg-white text-black p-2 rounded-full font-bold">New Chat</button>
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>    
     </>
