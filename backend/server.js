@@ -1,6 +1,10 @@
 import express from "express"
 import PostRoute from "./Routes/PostRoute.js";
 import cors from "cors"
+import connectDB from "./config/db.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 connectDB();
 
@@ -11,6 +15,8 @@ app.use(express.json());
 
 app.use("/x/post", PostRoute);
 
-app.listen(5173, () =>{
-    console.log("Server started on PORT: 5173")
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server started on PORT: ${PORT}`)
 })
