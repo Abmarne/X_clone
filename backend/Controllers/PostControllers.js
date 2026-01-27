@@ -1,6 +1,7 @@
 import Post from '../Models/Post.js';
 
 export async function newPost(req, res) {
+    console.log("New post request received:", req.body);
     try {
         const { content } = req.body;
 
@@ -29,5 +30,16 @@ export async function newPost(req, res) {
             success: false,
             message: "Internal Server error"
         });
+    }
+}
+
+export async function getPosts(req, res) {
+    try {
+        const posts = await Post.find().sort({ createdAt: -1 });
+        res.status(200).json(posts);
+    }
+    catch (error) {
+        console.error("Error fetching posts.", error);
+        res.status(500).json({ success: false, message: "Internal Server Error." });
     }
 }

@@ -6,17 +6,25 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-connectDB();
+const startServer = async () => {
+    try {
+        await connectDB();
 
-const app = express();
+        const app = express();
 
-app.use(cors());
-app.use(express.json());
+        app.use(cors());
+        app.use(express.json());
 
-app.use("/x/post", PostRoute);
+        app.use("/x/post", PostRoute);
 
-const PORT = process.env.PORT || 3000;
+        const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server started on PORT: ${PORT}`)
-})
+        app.listen(PORT, () => {
+            console.log(`Server started on PORT: ${PORT}`)
+        })
+    } catch (error) {
+        console.error("Critical server failure:", error);
+    }
+}
+
+startServer();
