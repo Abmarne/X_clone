@@ -9,10 +9,6 @@ html, body, #root {
   width: 100%;
 }
 
-html {
-  background-color: black;
-}
-
 body {
   background-color: black;
   color: white;
@@ -20,5 +16,4 @@ body {
 
 #root {
   display: block;
-  background-color: black;
 }    
