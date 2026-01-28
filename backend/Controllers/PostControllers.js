@@ -43,3 +43,33 @@ export async function getPosts(req, res) {
         res.status(500).json({ success: false, message: "Internal Server Error." });
     }
 }
+
+// ✅ New controller to handle liking a post
+export async function likePost(req, res) {
+    try {
+        const postId = req.params.id;
+        const post = await Post.findById(postId);
+
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                message: "Post not found"
+            });
+        }
+
+        post.likes += 1;
+        await post.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Post liked successfully",
+            likes: post.likes
+        });
+    } catch (error) {
+        console.error("Error liking the post:", error);
+        res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
+}

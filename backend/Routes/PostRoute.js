@@ -1,9 +1,15 @@
 import express from "express";
-import { newPost, getPosts } from "../Controllers/PostControllers.js";
+import { newPost, getPosts, likePost } from "../Controllers/PostControllers.js";
 
 const router = express.Router();
 
+// Create a new post
 router.post("/", newPost);
+
+// Get all posts
 router.get("/", getPosts);
+
+// Like a specific post
+router.post("/:id/like", likePost);
 
 export default router;
