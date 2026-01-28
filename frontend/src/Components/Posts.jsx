@@ -59,38 +59,59 @@ const Posts = () => {
 
     return (
         <div className="flex flex-col">
-            {posts.map((post) => (
-                <div key={post._id} className="border-b border-gray-800 p-4 hover:bg-white/5 transition-colors cursor-pointer">
-                    <div className="flex gap-3">
-                        <img
-                            src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${post._id}`}
-                            alt="avatar"
-                            className="w-10 h-10 rounded-full bg-gray-700"
-                        />
-                        <div className="flex flex-col w-full">
-                            <div className="flex items-center gap-2">
-                                <span className="font-bold hover:underline text-white">User</span>
-                                <span className="text-gray-500 text-sm">@user · {new Date(post.createdAt).toLocaleDateString()}</span>
-                            </div>
-                            <p className="mt-1 text-[15px] text-white whitespace-pre-wrap leading-normal">
-                                {post.content}
-                            </p>
+            {posts.map((post) => {
+                const handleLike = async () => {
+                    try {
+                        const res = await fetch(`http://localhost:3000/api/posts/like/${post._id}`, {
+                            method: "POST"
+                        });
 
-                            {/* Actions */}
-                            <div className="flex justify-between mt-3 max-w-md text-gray-500">
-                                <button className="hover:text-sky-500 flex items-center gap-1 group transition-colors">
-                                    <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
-                                        <MessageCircle size={18} />
-                                    </div>
-                                    <span className="text-sm">{post.comments?.length || 0}</span>
-                                </button>
+                        const data = await res.json();
 
-                                <button className="hover:text-green-500 flex items-center gap-1 group transition-colors">
-                                    <div className="p-2 group-hover:bg-green-500/10 rounded-full">
-                                        <Repeat2 size={18} />
-                                    </div>
-                                    <span className="text-sm">{post.retweets || 0}</span>
-                                </button>
+                        // Update the specific post's likes in the posts array
+                        setPosts(prevPosts =>
+                            prevPosts.map(p =>
+                                p._id === post._id ? { ...p, likes: data.likes } : p
+                            )
+                        );
+                    }
+                    catch (err) {
+                        console.error("Error liking post:", err);
+                    }
+                };
+
+                return (
+                    <div key={post._id} className="border-b border-gray-800 p-4 hover:bg-white/5 transition-colors cursor-pointer">
+                        <div className="flex gap-3">
+                            <img
+                                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${post._id}`}
+                                alt="avatar"
+                                className="w-10 h-10 rounded-full bg-gray-700"
+                            />
+                            <div className="flex flex-col w-full">
+                                <div className="flex items-center gap-2">
+                                    <span className="font-bold hover:underline text-white">User</span>
+                                    <span className="text-gray-500 text-sm">@user · {new Date(post.createdAt).toLocaleDateString()}</span>
+                                </div>
+                                <p className="mt-1 text-[15px] text-white whitespace-pre-wrap leading-normal">
+                                    {post.content}
+                                </p>
+
+                                {/* Actions */}
+                                <div className="flex justify-between mt-3 max-w-md text-gray-500">
+                                    <button className="hover:text-sky-500 flex items-center gap-1 group transition-colors">
+                                        <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
+                                            <MessageCircle size={18} />
+                                        </div>
+                                        <span className="text-sm">{post.comments?.length || 0}</span>
+                                    </button>
+
+                                    <button className="hover:text-green-500 flex items-center gap-1 group transition-colors">
+                                        <div className="p-2 group-hover:bg-green-500/10 rounded-full">
+                                            <Repeat2 size={18} />
+                                        </div>
+                                        <span className="text-sm">{post.retweets || 0}</span>
+                                    </button>
 
                                 <button
                                     onClick={() => handleLike(post._id)}
@@ -102,23 +123,24 @@ const Posts = () => {
                                     <span className="text-sm">{post.likes || 0}</span>
                                 </button>
 
-                                <button className="hover:text-sky-500 flex items-center gap-1 group transition-colors">
-                                    <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
-                                        <BarChart2 size={18} />
-                                    </div>
-                                    <span className="text-sm">{Math.floor(Math.random() * 1000)}</span>
-                                </button>
+                                    <button className="hover:text-sky-500 flex items-center gap-1 group transition-colors">
+                                        <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
+                                            <BarChart2 size={18} />
+                                        </div>
+                                        <span className="text-sm">{Math.floor(Math.random() * 1000)}</span>
+                                    </button>
 
-                                <button className="hover:text-sky-500 flex items-center group transition-colors">
-                                    <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
-                                        <Share size={18} />
-                                    </div>
-                                </button>
+                                    <button className="hover:text-sky-500 flex items-center group transition-colors">
+                                        <div className="p-2 group-hover:bg-sky-500/10 rounded-full">
+                                            <Share size={18} />
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };

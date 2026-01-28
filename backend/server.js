@@ -1,21 +1,25 @@
 import express from "express"
-import PostRoute from "./Routes/PostRoute.js";
+import postRoute from "./Routes/PostRoute.js";
 import cors from "cors"
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
 
+
 dotenv.config();
+
+
 
 const startServer = async () => {
     try {
         await connectDB();
-
+        
         const app = express();
-
+        
         app.use(cors());
         app.use(express.json());
-
-        app.use("/x/post", PostRoute);
+        
+        app.use("/api/posts", postRoute);
+        app.use("/x/post", postRoute);
 
         const PORT = process.env.PORT || 3000;
 

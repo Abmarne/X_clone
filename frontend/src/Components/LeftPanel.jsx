@@ -3,6 +3,7 @@ import MoreSettings from "../Components/MoreSettings"
 import { Bell, CircleEllipsis, CircleSlash2, Ellipsis, HouseIcon, Mail, SearchIcon, User, UserPlus, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import NewPost from "./NewPost";
 
 const LeftPanel = () =>{
     const [isDrowDownOpen,setIsDropDownOpen] = useState(false);
@@ -100,7 +101,9 @@ const LeftPanel = () =>{
                                 </div>
                             </div>
                             
-                            <button className="bg-white p-3 btn rounded-full btn-ghost w-[90%] h-[90%] justify-center text-black font-bold">
+                            <button className="bg-white p-3 btn rounded-full btn-ghost w-[90%] h-[90%] justify-center text-black font-bold"
+                                
+                            >
                                 Post
                             </button>
                         </div>
