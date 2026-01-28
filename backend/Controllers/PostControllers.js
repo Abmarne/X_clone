@@ -43,3 +43,19 @@ export async function getPosts(req, res) {
         res.status(500).json({ success: false, message: "Internal Server Error." });
     }
 }
+
+export async function updateLikes(req, res) {
+    try {
+        const post = await Post.findByIdAndUpdate(
+            req.params.postId,
+            { $inc: { likes: 1 } },
+            { new: true }
+        );
+
+        res.json({ likes: post.likes });
+    }
+    catch (error) {
+        console.error("Error updating the likes.", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+}
